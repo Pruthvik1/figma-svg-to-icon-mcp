@@ -1,8 +1,59 @@
-# figma-icon-mcp
+# figma-svg-to-icon-mcp
 
 An MCP (Model Context Protocol) server that extracts SVG icons from Figma and generates React TSX icon components — automatically, from your AI assistant.
 
 Works with **GitHub Copilot**, **Claude**, and any MCP-compatible AI assistant.
+
+## Setup
+
+### Prerequisites
+
+- Node.js 18+
+- VS Code with GitHub Copilot (agent mode) or Claude Desktop
+- A Figma personal access token
+
+### 1. Get a Figma Token
+
+Go to [figma.com](https://figma.com) → Settings → Security → **Personal access tokens** → Generate new token.
+
+Scopes needed: `file_content:read`
+
+### 2. Configure your MCP client
+
+**VS Code (`.vscode/mcp.json` or user settings):**
+
+```json
+{
+ "servers": {
+  "figma-svg-to-icon-mcp": {
+   "type": "stdio",
+   "command": "npx",
+   "args": ["-y", "figma-svg-to-icon-mcp"],
+   "env": {
+    "FIGMA_TOKEN": "figd_your_token_here"
+   }
+  }
+ }
+}
+```
+
+**Claude Desktop (`claude_desktop_config.json`):**
+
+```json
+{
+ "mcpServers": {
+  "figma-svg-to-icon-mcp": {
+   "command": "npx",
+   "args": ["-y", "figma-svg-to-icon-mcp"],
+   "env": {
+    "FIGMA_TOKEN": "figd_your_token_here"
+   }
+  }
+ }
+}
+```
+
+> **Note:** Each user needs their own `FIGMA_TOKEN`. Tokens are tied to Figma account permissions.
 
 ## What it does
 
@@ -29,57 +80,6 @@ export default function ArrowRightIcon({ className }: IconProps) {
  );
 }
 ```
-
-## Prerequisites
-
-- Node.js 18+
-- VS Code with GitHub Copilot (agent mode) or Claude Desktop
-- A Figma personal access token
-
-## Setup
-
-### 1. Get a Figma Token
-
-Go to [figma.com](https://figma.com) → Settings → Security → **Personal access tokens** → Generate new token.
-
-Scopes needed: `file_content:read`
-
-### 2. Configure your MCP client
-
-**VS Code (`.vscode/mcp.json` or user settings):**
-
-```json
-{
- "servers": {
-  "figma-icon-mcp": {
-   "type": "stdio",
-   "command": "npx",
-   "args": ["-y", "figma-icon-mcp"],
-   "env": {
-    "FIGMA_TOKEN": "figd_your_token_here"
-   }
-  }
- }
-}
-```
-
-**Claude Desktop (`claude_desktop_config.json`):**
-
-```json
-{
- "mcpServers": {
-  "figma-icon-mcp": {
-   "command": "npx",
-   "args": ["-y", "figma-icon-mcp"],
-   "env": {
-    "FIGMA_TOKEN": "figd_your_token_here"
-   }
-  }
- }
-}
-```
-
-> **Note:** Each user needs their own `FIGMA_TOKEN`. Tokens are tied to Figma account permissions.
 
 ## Usage
 

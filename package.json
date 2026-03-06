@@ -1,6 +1,6 @@
 {
   "name": "figma-svg-to-icon-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server that extracts SVG icons from Figma and generates React TSX icon components. Works with GitHub Copilot, Claude, and any MCP-compatible AI assistant.",
   "type": "module",
   "main": "dist/index.js",
